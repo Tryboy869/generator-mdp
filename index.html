@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔐 ILN Password Generator</title>
+    
+    <!-- ILN Frontend Optimizations -->
+    <meta name="description" content="Générateur de mots de passe sécurisé avec architecture ILN révolutionnaire">
+    <meta name="keywords" content="password, generator, security, ILN, architecture">
+    
+    <!-- Performance optimizations - Essence ptr!() -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    
+    <!-- PWA Meta -->
+    <meta name="theme-color" content="#059669">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    
+    <!-- Inline Critical CSS - Essence compile!() -->
+    <style>
+        /* Critical CSS inlined pour First Paint rapide */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #374151;
+            background-color: #f9fafb;
+        }
+        
+        #root {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .app-container {
+            flex: 1;
+        }
+        
+        /* Loading state - Essence hydrate!() */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50vh;
+            font-size: 18px;
+            color: #6b7280;
+        }
+        
+        .loading::after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            margin-left: 10px;
+            border: 2px solid #e5e7eb;
+            border-top: 2px solid #3b82f6;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .app-container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Root container pour React -->
+    <div id="root">
+        <!-- Loading state initial - Essence hydrate!() -->
+        <div class="loading">
+            🚀 Chargement ILN Frontend Super-Engine
+        </div>
+    </div>
+    
+    <!-- ILN Frontend Script -->
+    <script type="module" src="/frontend.jsx"></script>
+    
+    <!-- Service Worker pour PWA (optionnel) -->
+    <script>
+        // Essence cache!() - Service Worker registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('🔧 SW registered:', registration);
+                    })
+                    .catch(error => {
+                        console.log('SW registration failed:', error);
+                    });
+            });
+        }
+        
+        // Performance monitoring - Essence ptr!()
+        window.addEventListener('load', () => {
+            if (window.performance) {
+                const loadTime = window.performance.timing.loadEventEnd - window.performance.timing.navigationStart;
+                console.log(`⚡ ILN Frontend Load Time: ${loadTime}ms`);
+            }
+        });
+    </script>
+</body>
+</html>
