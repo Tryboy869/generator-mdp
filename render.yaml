@@ -1,0 +1,70 @@
+# render.yaml - Configuration Déploiement ILN sur Render
+# Architecture 4-fichiers optimisée pour performance maximale
+
+services:
+  # Backend Service - ILN Super-Moteur
+  - type: web
+    name: iln-password-backend
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python backend.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+      - key: PORT
+        value: "8000"
+      - key: HOST
+        value: "0.0.0.0"
+      - key: ILN_MODE
+        value: "production"
+      - key: ILN_ESSENCES
+        value: "chan,own,cache,ptr"
+    healthCheckPath: /
+    plan: free
+    
+  # Frontend Service - ILN Frontend Super-Engine  
+  - type: static
+    name: iln-password-frontend
+    buildCommand: |
+      npm install &&
+      npm run build
+    publishPath: ./dist
+    envVars:
+      - key: NODE_VERSION
+        value: "18"
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: iln-password-backend
+          property: host
+      - key: VITE_ILN_MODE
+        value: "production"
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /index.html
+        name: Cache-Control
+        value: no-cache
+    plan: free
+
+# Configuration globale
+buildFilter:
+  paths:
+    - backend.py
+    - frontend.jsx
+    - requirements.txt
+    - package.json
+    - vite.config.js
+    - index.html
+  ignoredPaths:
+    - README.md
+    - .git/**
+    - node_modules/**
+    - __pycache__/**
+    - .env
+    - *.log
