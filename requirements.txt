@@ -1,0 +1,51 @@
+# requirements.txt - ILN Super-Moteur Backend Dependencies
+# Essences: chan!() + own!() + ptr!() + cache!()
+
+# ===============================================
+# CORE ILN ESSENCES
+# ===============================================
+
+# FastAPI + Uvicorn - Essence chan!() pour concurrence async native
+fastapi>=0.104.1
+uvicorn[standard]>=0.24.0
+
+# WebSockets - Essence event!() pour temps réel
+websockets>=12.0
+
+# Security & Validation - Essence own!() pour ownership sécurisé
+pydantic>=2.5.0
+python-multipart>=0.0.6
+
+# Performance Optimization - Essence ptr!() pour optimisation mémoire
+orjson>=3.9.10          # JSON ultra-rapide (essence ptr!)
+python-json-logger>=2.0.7
+
+# ===============================================
+# DEPLOYMENT & PRODUCTION
+# ===============================================
+
+# ASGI Server Production
+gunicorn>=21.2.0
+
+# Environment Management
+python-dotenv>=1.0.0
+
+# Cross-Origin Resource Sharing
+python-cors>=1.7.0
+
+# ===============================================
+# MONITORING & OBSERVABILITY
+# ===============================================
+
+# Metrics & Health Checks
+psutil>=5.9.6          # System monitoring
+prometheus-client>=0.19.0  # Metrics export (optionnel)
+
+# ===============================================
+# DEVELOPMENT DEPENDENCIES (commentées pour prod)
+# ===============================================
+
+# pytest>=7.4.3          # Tests
+# httpx>=0.25.2           # Test client async
+# black>=23.11.0          # Code formatting
+# flake8>=6.1.0          # Linting
