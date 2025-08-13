@@ -31,7 +31,7 @@ gunicorn>=21.2.0
 python-dotenv>=1.0.0
 
 # Cross-Origin Resource Sharing
-python-cors>=1.7.0
+python-cors
 
 # ===============================================
 # MONITORING & OBSERVABILITY
